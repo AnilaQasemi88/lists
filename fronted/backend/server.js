@@ -1,11 +1,16 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+import taskRouter from "./routes/taskRouter.js";
+import connectDB from "./database/connectDB.js";
+
+
 dotenv.config();
 
-import taskRouter from "./routes/taskRouter.js";
-
-import connectDB from "./database/connectDB.js";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -14,9 +19,14 @@ const connectionString = process.env.MONGO_URL;
 
 // Start MIDDLEWARES
 app.use(cors());
+
 app.use(express.json());
 
 app.use("/tasks", taskRouter);
+
+app.use("/", express.static(path.join(__dirname, "/dist")));
+
+app.get("/*", (req, res) => res.sendFile(__dirname + "/dist/index.html"));
 
 const startServer = async () => {
   try {
