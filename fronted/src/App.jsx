@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.scss";
 import ListItem from "./components/ListItem";
 
-const baseURL = "https://tasklist-api-5e9b.onrender.com/tasks";
+const baseURL = "/tasks";
 
 function App() {
   const [task, setTask] = useState("");

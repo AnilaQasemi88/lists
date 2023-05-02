@@ -9,7 +9,7 @@ export default function ListItem({ task, list, setList, id }) {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`https://tasklist-api-5e9b.onrender.com/tasks/${id}`);
+      await axios.delete(`/tasks/${id}`);
 
       const filteredList = list.filter((el) => {
         return el._id != id;
@@ -32,7 +32,7 @@ export default function ListItem({ task, list, setList, id }) {
   const handleEdit = async () => {
     if (newTask !== "") {
       try {
-        const res = await axios.put(`https://tasklist-api-5e9b.onrender.com/tasks/${id}`, {
+        const res = await axios.put(`/tasks/${id}`, {
           task: newTask,
         });
 
