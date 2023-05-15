@@ -1,2 +1,2 @@
 # lists
-Die verlinkung mit Render: https://list-jnhp.onrender.com/
+Der Link zu Render: https://list-jnhp.onrender.com/
